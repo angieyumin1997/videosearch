@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import vttp2022.ssf.assessment.videosearch.models.Game;
+import vttp2022.ssf.assessment.videosearch.models.GameCreation;
 import vttp2022.ssf.assessment.videosearch.service.SearchService;
 
 @Controller
@@ -27,7 +28,7 @@ public class SearchController {
         
         SearchService searchsvc = new SearchService();
         
-        List <Game> games = new LinkedList<>();
+        List<GameCreation> games = new LinkedList<>();
         games = searchsvc.search(searchString,count);
         System.out.printf("RESULT123>>>>>>>>>>>>>>%s",games);
         model.addAttribute("games", games);

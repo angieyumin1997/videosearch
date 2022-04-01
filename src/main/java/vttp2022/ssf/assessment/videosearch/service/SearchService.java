@@ -12,6 +12,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import vttp2022.ssf.assessment.videosearch.models.Game;
+import vttp2022.ssf.assessment.videosearch.models.GameCreation;
 import vttp2022.ssf.assessment.videosearch.models.GameUtil;
 
 public class SearchService {
@@ -30,7 +31,7 @@ public class SearchService {
 
     private static final String URL = "https://api.rawg.io/api/games";
 
-    public List<Game> search(String searchString, Integer count){
+    public List<GameCreation> search(String searchString, Integer count){
         
         String getGameResults = UriComponentsBuilder.fromUriString(URL)
             .queryParam("search", searchString)
