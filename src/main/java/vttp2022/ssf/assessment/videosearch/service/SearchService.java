@@ -1,6 +1,9 @@
 package vttp2022.ssf.assessment.videosearch.service;
 
 import java.util.List;
+
+import javax.annotation.PostConstruct;
+
 import org.springframework.http.MediaType;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.RequestEntity;
@@ -17,6 +20,14 @@ public class SearchService {
     @Value("${rawg.api.key}")
     private String apiKey;
 
+    private boolean hasKey;
+
+    @PostConstruct
+    private void init() {
+        hasKey = null != apiKey;
+        System.out.println(">>>> API key set: " + hasKey);
+    }
+
     private static final String URL = "https://api.rawg.io/api/games";
 
     public List<Game> search(String searchString, Integer count){
@@ -24,15 +35,13 @@ public class SearchService {
         String getGameResults = UriComponentsBuilder.fromUriString(URL)
             .queryParam("search", searchString)
             .queryParam("page_size", count)
-            .queryParam("key",apiKey)
+            .queryParam("key","731439d59fbc4ce49cff91b824f9d96c")
             .toUriString();
-        
-        RequestEntity<Void> req = RequestEntity.get(getGameResults)
-            .accept(MediaType.APPLICATION_JSON)
-            .build();
+
+        System.out.printf(">>> website: %s", getGameResults);
 
         RestTemplate template = new RestTemplate();
-        ResponseEntity<String> resp = template.exchange(req, String.class);
+        ResponseEntity<String> resp = template.getForEntity(getGameResults, String.class);
         return GameUtil.create(resp.getBody()).getGames();
     }
     
