@@ -35,28 +35,24 @@ public class GameUtil {
         JsonArray a = o.getJsonArray("results");
         List <Game> games = new LinkedList<>();
         
-        for (JsonValue i: a){
-            JsonObject b = i.asJsonObject();
-
-            String name = b.getString("name");
+        for (int i = 0; i < a.size(); i++){
+            
+            String name = a.getJsonObject(i).getString("name");
             g.setName(name);
 
-            Float rating = b.getJsonNumber("rating").bigDecimalValue().floatValue();
+            Float rating = a.getJsonObject(i).getJsonNumber("rating").bigDecimalValue().floatValue();
             g.setRating(rating);
 
-            String backgroundimage = b.getString("background_image");
+            String backgroundimage = a.getJsonObject(i).getString("background_image");
             g.setBackgroundImage(backgroundimage);
 
             games.add(g);
-            
         }
-        
         u.games = games;
         return u;
         
 
     } 
-
 
 
 }

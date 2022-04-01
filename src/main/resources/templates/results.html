@@ -7,16 +7,23 @@
     <title>Document</title>
 </head>
 <body>
-    
-    <div data-th-each="g: ${games}"></div>
-
-        <img data-th-src="${g.backgroundImage}">
-        <h1 data-th-text=${g.name}></h1>
-        <h1 data-th-text=${g.rating}></h1>
-
-    </div>
         
-
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>Title</th>
+                <th>Rating</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr data-th-each="g: ${games}">
+                <td><img data-th-src="${g.backgroundImage}"></td>
+                <td data-th-text="${g.name}"></td>
+                <td data-th-text="${g.rating}"></td>
+            </tr>
+        </tbody>
+    </table>
     
 </body>
 </html>
