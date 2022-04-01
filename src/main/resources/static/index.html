@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Video Game Search</h1>
+
+    <form methods="GET" action="/search">
+
+        <label for="searchString">Search Name</label>
+        <input type="text" name="searchString" id="searchString" required>
+        <br>
+        <label for="count">Number of results</label>
+        <select name="count" required select="5">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+        </select>
+        <br>
+        <button type="submit">Search</button>
+    </form>
+</body>
+</html>

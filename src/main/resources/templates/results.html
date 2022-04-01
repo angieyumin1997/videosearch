@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div data-th-each="g: ${games}"></div>
+
+        <img data-th-src="${g.backgroundImage}">
+        <h1 data-th-text=${g.name}></h1>
+        <h1 data-th-text=${g.rating}></h1>
+
+    </div>
+        
+
+    
+</body>
+</html>
